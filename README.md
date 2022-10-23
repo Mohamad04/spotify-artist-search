@@ -3,11 +3,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## First clone the app by excuting the following command: 
-`git clone 
+`git clone https://github.com/Mohamad04/spotify-artist-search.git`
 
-:
+### install dependencies using:
+`npm install`
 
-### `npm start`
+then 
+#### `npm run start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
