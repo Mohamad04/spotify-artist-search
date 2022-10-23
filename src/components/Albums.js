@@ -19,8 +19,6 @@ const Albums = () => {
         if (response1.status === 200) {
           setAlbums(response1.data.items);
         } else console.log("you are not authorized");
-
-
         let response2 = await getArtistDetails(id, access_token);
         // console.log(response2.data);
         setArtistName(response2.data.name)
