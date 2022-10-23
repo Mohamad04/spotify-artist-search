@@ -5,7 +5,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## First clone the app by excuting the following command: 
 `git clone https://github.com/Mohamad04/spotify-artist-search.git`
 
-### install dependencies using:
+## cd to spotify-artist-search directory 
+then
+## install dependencies using:
 `npm install`
 
 then 
