@@ -30,7 +30,7 @@ const SearchArtists = () => {
   // const [userInput, setUserInput] = useState("");
   const [token, setToken] = useState("");
   const [artists, setArtists] = useState({});
-    const [searchTerm, setSearch] = useState("");
+  const [searchTerm, setSearch] = useState("");
 
 
   
@@ -50,13 +50,13 @@ const SearchArtists = () => {
   useEffect(() => {
     if(searchTerm !== "" ) {
         const delayDebounce = setTimeout(() => {
-        console.log(searchTerm);
+        // console.log(searchTerm);
         handleUserInput(searchTerm);
-        }, 300);
+        }, 400);
 
         return () => clearTimeout(delayDebounce);
     }
-  
+   
   }, [searchTerm])
 
 
@@ -66,13 +66,16 @@ const SearchArtists = () => {
       let response = await getArtists(token, artist);
       // console.log(response.data.artists.items);
       if (response.status === 200) {
-        let data = response.data.artists.items;
-        let filteredArtists = data.filter((n) => n.name.toLowerCase().includes(searchTerm) );	
+        let IncomingArtists = response.data.artists.items;
+        let filteredArtists = IncomingArtists.filter((artist) =>
+          artist.name.toLowerCase().search(searchTerm) >= 0
+        );	
         setArtists(filteredArtists);
       } else {
         Auth.removeAuthData();
         window.location.href = "/";
       }
+
     } catch (error) {
       console.log(error);
     }
@@ -81,12 +84,12 @@ const SearchArtists = () => {
 
 
   let ratingStars = (popularity) => {
-    let yellowStar = popularity * 0.05;
+    let yellowStar = Math.round(popularity * 0.05);
     // console.log(popularity, yellowStar);
     return (
       <>
         {[...Array(5)].map((e, i) => {
-          if (i < Math.round(yellowStar))
+          if (i < yellowStar)
             return (
               <svg
                 key={i}
