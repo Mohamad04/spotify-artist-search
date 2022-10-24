@@ -33,8 +33,8 @@ export const getArtists = async (token, artist) => {
     url += "?q=" + artist;
     url += "&type=artist";
     url += "&market=ES";
-    url += "&limit=10";
-    url += "&offset=5";
+    url += "&limit=50";
+    url += "&offset=0";
 
     let response = await axios(url, {
       method: 'GET',
@@ -56,7 +56,7 @@ export const getArtistAlbums = async (id, token) => {
     url += "?include_groups=single";
     url += "&market=ES";
     url += "&limit=50";
-    url += "&offset=5";
+    url += "&offset=0";
 
     let response = await axios(url, {
       method: 'GET',
