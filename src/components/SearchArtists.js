@@ -64,9 +64,11 @@ const SearchArtists = () => {
   const handleUserInput = async (artist) => {
     try {
       let response = await getArtists(token, artist);
-      console.log(response.data.artists.items);
+      // console.log(response.data.artists.items);
       if (response.status === 200) {
-        setArtists(response.data.artists.items);
+        let data = response.data.artists.items;
+        let filteredArtists = data.filter((n) => n.name.toLowerCase().includes(searchTerm) );	
+        setArtists(filteredArtists);
       } else {
         Auth.removeAuthData();
         window.location.href = "/";
@@ -153,7 +155,7 @@ const SearchArtists = () => {
                 <div className="h-full flex flex-col border-2 border-gray-500 hover:cursor-pointer">
                   <span className=" relative md:h-52  overflow-hidden border-b-2 border-gray-500">
                     <img
-                      alt="artist"
+                      alt="artist photo"
                       className=" object-cover object-center block border-b-2 border-gray-500"
                       src={artist.images.length ? artist.images[0].url : artist.images.url}
                       //   src={""}

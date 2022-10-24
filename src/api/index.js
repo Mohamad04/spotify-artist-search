@@ -32,7 +32,7 @@ export const getArtists = async (token, artist) => {
     let url = "https://api.spotify.com/v1/search";
     url += "?q=" + artist;
     url += "&type=artist";
-    url += "&market=ES";
+    // url += "&market=ES";
     url += "&limit=50";
     url += "&offset=0";
 
